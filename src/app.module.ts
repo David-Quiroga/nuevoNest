@@ -1,15 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AppleModule,  } from './apple/apple.module';
-import { AppleController } from './apple/apple.controller';
-import { MateriasModule } from './materias/materias.module';
-
+import { AlumnosModule } from './alumnos/alumnos.module';
+import { AlumnosController } from './alumnos/alumnos.controller';
+import { AlumnosService } from './alumnos/alumnos.service';
 
 @Module({
-  imports: [AppleModule, MateriasModule],
-  controllers: [AppController, AppleController],
-  providers: [AppService],
+  imports: [AlumnosModule],
+  controllers: [AppController, AlumnosController],
+  providers: [AppService, AlumnosService],
 
 })
 export class AppModule {
