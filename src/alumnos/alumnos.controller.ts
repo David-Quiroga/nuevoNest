@@ -1,23 +1,25 @@
-import { Controller, Get, Param, ParseIntPipe, Post, Body, Query } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AlumnosService } from './alumnos.service';
 
 @Controller('alumnos')
-export class AlumnosController { // Cambio en el nombre de la clase
-    constructor(public alumnos: AlumnosService){}
+export class AlumnosController { 
+    constructor(public alumnosService: AlumnosService){}
+    
     @Get()
-    trs(){
-        return this.alumnos.all_items
+    all_users(){
+        return this.alumnosService.all_users()
     }
-    @Get(":id")
-    dos(@Param("id", ParseIntPipe) dato: string){
-        return this.alumnos.alu(dato);
-    }
-    @Post()
-    create(@Body() newItem: {id:number, nombre: string}){
-        return this.alumnos.createItem(newItem)
-    }
-    @Get("search")
-    search(@Query("nombre") nombre: string){
-        return this.alumnos.searchItem(nombre)
-    }
+
+    // @Get(":id")
+    // dos(@Param("id", ParseIntPipe) dato: string){
+    //     return this.alumnosService
+    // }
+    // @Post()
+    // create(@Body() newItem: {id:number, nombre: string}){
+    //     return this.alumnos.createItem(newItem)
+    // }
+    // @Get("search")
+    // search(@Query("nombre") nombre: string){
+    //     return this.alumnos.searchItem(nombre)
+    // }
 }
